@@ -1,1 +1,6 @@
-target/
+spring-brasil/target/
+spring-brasil/.settings/
+spring-brasil/.project
+spring-brasil/.springBeans
+spring-brasil/.classpath
+*.class
