@@ -1,0 +1,67 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>br.com.itexto</groupId>
+  <artifactId>spring-brasil</artifactId>
+  <packaging>war</packaging>
+  <version>1.0.0-SNAPSHOT</version>
+  <name>spring-brasil Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  
+  <properties>
+  	<spring.versao>3.1.1.RELEASE</spring.versao>
+  	<tiles.versao>2.2.2</tiles.versao>
+  </properties> 
+  
+  <dependencies>
+    <!-- As dependências do Spring Framework -->
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-webmvc</artifactId>
+    	<version>${spring.versao}</version>
+    </dependency>
+    
+    <!-- Inclusão do Apache Tiles para lidar com
+    templates no Projeto -->
+    <dependency>
+    	<groupId>org.apache.tiles</groupId>
+    	<artifactId>tiles-core</artifactId>
+    	<version>${tiles.versao}</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.apache.tiles</groupId>
+    	<artifactId>tiles-jsp</artifactId>
+    	<version>${tiles.versao}</version>
+    </dependency>
+    
+    <dependency>
+    	<groupId>org.slf4j</groupId>
+    	<artifactId>slf4j-log4j12</artifactId>
+    	<version>1.5.6</version>
+    </dependency>
+    
+    <dependency>
+    	<groupId>jstl</groupId>
+    	<artifactId>jstl</artifactId>
+    	<version>1.2</version>
+    </dependency>
+   
+    
+    <!-- Inclusão do Hibernate -->
+    <dependency>
+    	<groupId>org.hibernate</groupId>
+    	<artifactId>hibernate-core</artifactId>
+    	<version>4.1.7.Final</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <finalName>spring-brasil</finalName>
+  </build>
+</project>

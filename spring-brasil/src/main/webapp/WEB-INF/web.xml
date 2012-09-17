@@ -1,0 +1,30 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Spring Brasil</display-name>
+  <!-- O Dispatcher Servlet do Spring -->
+  <servlet>
+  	<servlet-name>DispatcherServlet</servlet-name>
+  	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  	<!-- 
+  		Por padrão o Servlet Dispatcher do Spring busca por um arquivo
+  		de configuração chamado [nome do servlet]-servlet.xml dentro do diretório /WEB-INF.
+  		Abaixo está uma chave de configuração que nos permite customizar o arquivo base
+  		aonde iniciamos a configuração dos nossos beans dentro do projeto
+  	 -->
+  	 <init-param>
+  	 	<param-name>contextConfigLocation</param-name>
+  	 	<param-value>/WEB-INF/spring/spring-servlet.xml</param-value>
+  	 </init-param>
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <!-- O servlet é mapeado como o principal do projeto. -->
+  <servlet-mapping>
+  	<servlet-name>DispatcherServlet</servlet-name>
+  	<url-pattern>/</url-pattern>
+  </servlet-mapping>
+  
+</web-app>
