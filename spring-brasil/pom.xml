@@ -20,6 +20,18 @@
     	<artifactId>spring-webmvc</artifactId>
     	<version>${spring.versao}</version>
     </dependency>
+    <!-- Para poder declarar o DataSource básico no ambiente de desenvolvimento -->
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-jdbc</artifactId>
+    	<version>${spring.versao}</version>
+    </dependency>
+    <!-- Suporte ao Hibernate e JPA -->
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-orm</artifactId>
+    	<version>${spring.versao}</version>
+    </dependency>
     
     <!-- Inclusão do Apache Tiles para lidar com
     templates no Projeto -->
@@ -34,6 +46,8 @@
     	<version>${tiles.versao}</version>
     </dependency>
     
+    
+    <!-- Sua inclusão é necessária por se tratar de uma dependência do Tiles 2 -->
     <dependency>
     	<groupId>org.slf4j</groupId>
     	<artifactId>slf4j-log4j12</artifactId>
@@ -52,6 +66,13 @@
     	<groupId>org.hibernate</groupId>
     	<artifactId>hibernate-core</artifactId>
     	<version>4.1.7.Final</version>
+    </dependency>
+    
+    <!-- O Driver de Acesso ao MySQL -->
+    <dependency>
+    	<groupId>mysql</groupId>
+    	<artifactId>mysql-connector-java</artifactId>
+    	<version>5.1.18</version>
     </dependency>
     
     <dependency>

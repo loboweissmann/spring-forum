@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
+<beans default-autowire="byType"  
+	xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -8,5 +9,31 @@
 	<context:annotation-config />
 	<context:component-scan base-package="br.com.itexto.springbrasil.dao"/>
 
-
+	<!-- 
+		O DataSource da aplicação.
+		Neste caso, este só deve ser usado em ambiente de desenvolvimento, pois não nos
+		oferece um pool de conexões.
+		
+		A cada chamada ao método getConnection() do bean obtido uma nova conexão é obtida.
+	 -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="username" value="springbrasil"/>
+		<property name="password" value="springbrasil"/>
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/springbrasil"/>
+	</bean>
+	
+	<!-- 
+		O SessionFactory do Hibernate.
+		Repare que é do Hibernate 4
+	 -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+	</bean>
+	
 </beans>
