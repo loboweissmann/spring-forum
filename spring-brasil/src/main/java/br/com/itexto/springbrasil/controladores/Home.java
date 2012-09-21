@@ -4,11 +4,15 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.com.itexto.springbrasil.dao.DAOAssunto;
 import br.com.itexto.springbrasil.dao.DAOTopico;
 import br.com.itexto.springbrasil.dao.DAOUsuario;
+import br.com.itexto.springbrasil.entidades.Usuario;
 
 @Controller
 public class Home {
@@ -59,6 +63,23 @@ public class Home {
 		model.put("assuntos", getDaoAssunto().list());
 		model.put("usuarios", getDaoUsuario().list());
 		return "index";
+	}
+	
+	@RequestMapping("/signup")
+	public String signup(Map<String, Object> model) {
+		model.put("usuario", new Usuario());
+		return "signup";
+	}
+	
+	@RequestMapping(value="/register", method=RequestMethod.POST)
+	public String register(Usuario usuario, BindingResult bindingResult) {
+		
+		System.out.println("usuario.login: " + usuario.getLogin());
+		for (ObjectError erro : bindingResult.getAllErrors()) {
+			System.out.println("Erro: " + erro.toString());
+		}
+		
+		return "redirect:/";
 	}
 	
 }

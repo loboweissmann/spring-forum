@@ -2,13 +2,18 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 <tiles-definitions>
-
-    <definition name="index" template="/views/index.jsp" id="index">
-        <!-- 
-        <put-attribute name="header" value="/template/header.jsp" />
-        <put-attribute name="menu" value="/template/menu.jsp" />
-        <put-attribute name="footer" value="/template/footer.jsp" />
-         -->
+	
+	<definition name="main" template="/views/templates/main.jsp">
+		<put-attribute name="titulo" value="Spring Brasil"/>
+	</definition>
+	
+    <definition name="index"  extends="main" >
+    	<put-attribute name="conteudo" value="/views/index.jsp"/>
+    </definition>
+    
+    <definition name="signup" extends="main">
+    	<put-attribute name="conteudo" value="/views/signup.jsp"/>
+    	<put-attribute name="titulo" value="Bem vindo(a)!"/>
     </definition>
     
     

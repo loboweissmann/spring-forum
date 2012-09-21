@@ -39,6 +39,12 @@
     	<groupId>org.apache.tiles</groupId>
     	<artifactId>tiles-core</artifactId>
     	<version>${tiles.versao}</version>
+    	<exclusions>
+    		<exclusion>
+    			<artifactId>slf4j-api</artifactId>
+    			<groupId>org.slf4j</groupId>
+    		</exclusion>
+    	</exclusions>
     </dependency>
     <dependency>
     	<groupId>org.apache.tiles</groupId>
@@ -46,6 +52,22 @@
     	<version>${tiles.versao}</version>
     </dependency>
     
+    <!-- Incluiremos o Hibernate Validator, que é a implementação de referência
+     da JSR-303 de validação.  -->
+     <dependency>
+     	<groupId>org.hibernate</groupId>
+     	<artifactId>hibernate-validator</artifactId>
+     	<version>4.2.0.Final</version>
+     	<!-- Nem tudo é simples.
+     	O Hibernate Validator causa conflitos com a declaração do slf4j-log4j12 que
+     	declaramos logo abaixo. -->
+     	<exclusions>
+     		<exclusion>
+     			<artifactId>slf4j-api</artifactId>
+     			<groupId>org.slf4j</groupId>
+     		</exclusion>
+     	</exclusions>
+     </dependency>
     
     <!-- Sua inclusão é necessária por se tratar de uma dependência do Tiles 2 -->
     <dependency>

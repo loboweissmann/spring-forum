@@ -1,9 +1,19 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
-
-<web-app>
+<web-app 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+    id="SpringBrasil"
+    version="2.5">
   <display-name>Spring Brasil</display-name>
+  
+	 <jsp-config>
+	 	<jsp-property-group>
+	 		<url-pattern>/**</url-pattern>
+	 		<el-ignored>false</el-ignored>
+	 	</jsp-property-group>
+	 </jsp-config>
+  
   <!-- O Dispatcher Servlet do Spring -->
   <servlet>
   	<servlet-name>DispatcherServlet</servlet-name>
@@ -26,5 +36,7 @@
   	<servlet-name>DispatcherServlet</servlet-name>
   	<url-pattern>/</url-pattern>
   </servlet-mapping>
+  
+ 
   
 </web-app>

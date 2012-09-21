@@ -2,14 +2,20 @@ package br.com.itexto.springbrasil.entidades;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+
 public class Usuario extends Entidade {
 	
+	@Size(max=128) @NotNull
 	private String nome;
-	
+	@Email @NotNull
 	private String email;
-	
+	@NotNull
 	private Date dataCadastro = new Date();
-	
+	@Size(max=32)
 	private String login;
 	
 	private String senha;
