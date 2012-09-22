@@ -1,4 +1,4 @@
-package br.com.itexto.springbrasil.controladores;
+package br.com.itexto.springforum.controladores;
 
 import java.util.List;
 
@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.itexto.springbrasil.dao.DAOUsuario;
-import br.com.itexto.springbrasil.entidades.Usuario;
+import br.com.itexto.springforum.dao.DAOUsuario;
+import br.com.itexto.springforum.entidades.Usuario;
 
 @Controller
-public class Autenticacao {
+public class ControllerAutenticacao {
 	
 	@Autowired
 	private DAOUsuario daoUsuario;

@@ -1,4 +1,4 @@
-package br.com.itexto.springbrasil.dao;
+package br.com.itexto.springforum.dao;
 
 import java.util.List;
 

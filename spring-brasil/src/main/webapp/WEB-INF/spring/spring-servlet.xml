@@ -31,7 +31,7 @@
 	</bean>
 	
 	<!-- Busca componentes do tipo @Controller dentro do pacote abaixo -->
-	<context:component-scan base-package="br.com.itexto.springbrasil.controladores"/>
+	<context:component-scan base-package="br.com.itexto.springforum.controladores"/>
 
 
 </beans>

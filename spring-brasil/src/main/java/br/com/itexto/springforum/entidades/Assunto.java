@@ -1,4 +1,4 @@
-package br.com.itexto.springbrasil.entidades;
+package br.com.itexto.springforum.entidades;
 
 public class Assunto extends Entidade implements Comparable{
 	

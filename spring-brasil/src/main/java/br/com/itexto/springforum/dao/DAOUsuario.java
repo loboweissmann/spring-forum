@@ -1,11 +1,11 @@
-package br.com.itexto.springbrasil.dao;
+package br.com.itexto.springforum.dao;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import br.com.itexto.springbrasil.entidades.Usuario;
+import br.com.itexto.springforum.entidades.Usuario;
 
 @Component("daoUsuario")
 public class DAOUsuario extends DAOBase<Usuario> {

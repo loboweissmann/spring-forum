@@ -1,4 +1,4 @@
-package br.com.itexto.springbrasil.entidades;
+package br.com.itexto.springforum.entidades;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
