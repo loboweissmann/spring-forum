@@ -1,11 +1,14 @@
 package br.com.itexto.springbrasil.controladores;
 
+import java.util.HashMap;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -61,24 +64,28 @@ public class Home {
 	@RequestMapping("/")
 	public String index(Map<String, Object> model) {
 		model.put("assuntos", getDaoAssunto().list());
-		model.put("usuarios", getDaoUsuario().list());
+		model.put("usuarios", getDaoUsuario().list(0,100));
 		return "index";
 	}
 	
 	@RequestMapping("/signup")
 	public String signup(Map<String, Object> model) {
-		model.put("usuario", new Usuario());
+		if (model.get("usuario") == null) {
+			model.put("usuario", new Usuario());
+		}
 		return "signup";
 	}
 	
 	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public String register(Usuario usuario, BindingResult bindingResult) {
+	public String register(@Valid Usuario usuario, BindingResult bindingResult, HttpSession sessao) {
 		
-		System.out.println("usuario.login: " + usuario.getLogin());
-		for (ObjectError erro : bindingResult.getAllErrors()) {
-			System.out.println("Erro: " + erro.toString());
+		if (bindingResult.hasErrors()) {
+			Map<String, Object> model = new HashMap<String, Object>();
+			model.put("usuario", usuario);
+			return signup(model);
 		}
-		
+		getDaoUsuario().persistir(usuario);
+		sessao.setAttribute("usuario", usuario);
 		return "redirect:/";
 	}
 	

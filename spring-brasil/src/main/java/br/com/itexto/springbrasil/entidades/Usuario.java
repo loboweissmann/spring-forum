@@ -6,16 +6,17 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 public class Usuario extends Entidade {
 	
-	@Size(max=128) @NotNull
+	@Size(max=128) @NotNull @NotEmpty
 	private String nome;
-	@Email @NotNull
+	@Email @NotNull @NotEmpty
 	private String email;
 	@NotNull
 	private Date dataCadastro = new Date();
-	@Size(max=32)
+	@Size(min=8, max=32) @NotNull @NotEmpty
 	private String login;
 	
 	private String senha;

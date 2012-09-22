@@ -36,7 +36,7 @@ public class Autenticacao {
 	@RequestMapping(value="/login", method={RequestMethod.POST})
 	public String login(@RequestParam("login") String login, @RequestParam("senha") String senha, HttpSession sessao) {
 		
-		List<Usuario> usuarios = daoUsuario.list();
+		List<Usuario> usuarios = daoUsuario.list(0,100);
 		Usuario autenticado = null;
 		for (Usuario usuario : usuarios) {
 			if (usuario.getLogin().equals(login) && usuario.getSenha().equals(senha)) {

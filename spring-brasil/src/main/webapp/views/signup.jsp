@@ -8,11 +8,13 @@
 	</div>
 	<div class="eight columns">
 	<form:form modelAttribute="usuario" action="register">
-		<label for="nome">Nome:</label>
+		
+		<label for="nome">Nome:<form:errors path="nome"/></label>
 		<form:input path="nome" class="four"/>
-		<label for="email">Email:</label>
+		
+		<label for="email">Email:<form:errors path="email"/></label>
 		<form:input path="email" class="four"/>
-		<label for="login">Nome do usu&aacute;rio (login):</label>
+		<label for="login">Nome do usu&aacute;rio (login):<form:errors path="login"/></label>
 		<form:input path="login" class="three"/>
 		<label for="senha">Senha:</label>
 		<form:password path="senha" class="three"/>
