@@ -32,7 +32,7 @@
 			</c:if>
 			<c:if test="${sessionScope.usuario != null}">
 				<br/>
-				Bem vindo(a) ${sessionScope.usuario.nome} - <a href="logout">Sair</a>
+				Bem vindo(a) ${sessionScope.usuario.nome} - <a href="<c:url value="/logout"/>">Sair</a>
 			</c:if>
 			
 		</div>
