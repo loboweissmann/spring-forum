@@ -12,17 +12,28 @@ public class DAOUsuario extends DAOBase<Usuario> {
 	
 	private List<Usuario> todos;
 	
+	public Usuario get(Long id) {
+		for (Usuario usuario : list(-1,-1)) {
+			if (usuario.getId() == id) {
+				return usuario;
+			}
+		}
+		return null;
+	}
+	
 	public List<Usuario> list(int offset, int max) {
 		if (todos == null) {
 			todos = new ArrayList<Usuario>();
-			String[] nomes = {"Henrique Lobo", "Kico", "JosuÃ©", "Amadeus", "Carvalhinho", "John McCarty"};
+			String[] nomes = {"Henrique Lobo", "Kico", "Josué", "Amadeus", "Carvalhinho", "John McCarty"};
 			for (int i = 0; i < nomes.length; i++) {
 				Usuario usuario = new Usuario();
 				usuario.setNome(nomes[i]);
 				usuario.setId(i + 1);
 				usuario.setEmail(nomes[i] + "@spring.com");
+				usuario.setEmail(usuario.getEmail().toLowerCase().replaceAll(" ", "_"));
 				usuario.setLogin(nomes[i].replaceAll(" ", "_").toLowerCase());
 				usuario.setSenha(usuario.getLogin());
+				usuario.setTwitter("@" + usuario.getLogin());
 				todos.add(usuario);
 			}
 		}

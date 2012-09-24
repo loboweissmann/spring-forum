@@ -5,7 +5,7 @@
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
     id="SpringBrasil"
     version="2.5">
-  <display-name>Spring Brasil</display-name>
+  	<display-name>Spring Forum</display-name>
   
 	 <jsp-config>
 	 	<jsp-property-group>

@@ -29,7 +29,7 @@
 			<h5>&Uacute;ltimos membros</h5>
 			<ul class="side-nav">
 			<c:forEach items="${usuarios}" var="usuario">
-				<li><a href="usuario/${usuario.id}">${usuario.nome}</a></li>
+				<li><a href="usuario/show/?id=${usuario.id}">${usuario.nome}</a></li>
 			</c:forEach>
 			</ul>
 		</div>

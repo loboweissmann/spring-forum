@@ -12,8 +12,13 @@
 	<!-- Habilitamos o Spring MVC a funcionar baseado em anotações -->
 	<mvc:annotation-driven />
 		
-	<!-- Configura o controlador que retorna recursos estáticos de nossa aplicação -->
-	<mvc:resources mapping="/recursos/**" location="/recursos/"/>
+	<!-- Configura o controlador que retorna recursos estáticos de nossa aplicação 
+		 Será também passado como parametro o parâmetro HTTP de cacheamento
+		 expires-to com prazo de cacheamento de 120 segundos
+	-->
+	<mvc:resources mapping="/recursos/**" 
+				   location="/recursos/"
+				   cache-period="120"/>
 	
 	<context:annotation-config />
 	

@@ -1,5 +1,8 @@
 .chamada {
-	background: #48762A;
+	background: url(../images/fundo_chamada.png);
+	background-repeat: repeat-y;
 	color: white;
 	padding: 2.0em;
+	min-height: 60px;
+	padding: 1.0em;
 }

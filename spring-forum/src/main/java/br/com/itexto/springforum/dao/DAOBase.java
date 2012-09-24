@@ -19,6 +19,10 @@ public abstract class DAOBase<T> {
 		return getSessionFactory().getCurrentSession();
 	}
 	
+	public T get(Long id) {
+		return (T) getSession().get(getClazz(), id);
+	}
+	
 	public void persistir(T obj) {
 		getSession().saveOrUpdate(obj);
 	}

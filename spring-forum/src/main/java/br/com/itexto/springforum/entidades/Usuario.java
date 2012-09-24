@@ -19,8 +19,12 @@ public class Usuario extends Entidade {
 	@Size(min=8, max=32) @NotNull @NotEmpty
 	private String login;
 	
+	private String twitter;
+	
 	private String senha;
 	
+	public String getTwitter() {return twitter;}
+	public void setTwitter(String valor) {twitter = valor;}
 
 	public String getLogin() {
 		return login;
