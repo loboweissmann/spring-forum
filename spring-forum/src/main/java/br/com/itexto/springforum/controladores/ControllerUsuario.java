@@ -1,15 +1,15 @@
 package br.com.itexto.springforum.controladores;
 
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import br.com.itexto.springforum.dao.DAOUsuario;
 import br.com.itexto.springforum.entidades.Usuario;
 
-@Controller
+@Controller("usuario")
 public class ControllerUsuario {
 	
 	@Autowired
@@ -17,11 +17,18 @@ public class ControllerUsuario {
 	public DAOUsuario getDaoUsuario() {return daoUsuario;}
 	public void setDaoUsuario(DAOUsuario dao) {daoUsuario = dao;}
 	
-	@RequestMapping("/usuario/show")
-	public String usuario(Long id, Map<String, Object> model) {
+	/**
+	 * Exemplo de como lidar com requisições que possuam variáveis embutidas.
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping("/usuario/show/{id}")
+	public ModelAndView usuario(@PathVariable("id") Long id) {
+		ModelAndView mav = new ModelAndView();
 		Usuario usuario = getDaoUsuario().get(id);
-		model.put("usuario", usuario);
-		return "usuario/show";
+		mav.getModel().put("usuario", usuario);
+		mav.setViewName("usuario/show");
+		return mav;
 	}
 	
 }
