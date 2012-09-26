@@ -42,6 +42,6 @@
 	<tiles:insertAttribute name="conteudo"/>
 
 
-
+	<tiles:insertAttribute name="rodape"/>
 </body>
 </html>

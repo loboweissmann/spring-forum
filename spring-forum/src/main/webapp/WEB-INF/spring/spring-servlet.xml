@@ -9,6 +9,8 @@
 	
 	<import resource="spring-data.xml"/>
 	
+	
+	
 	<!-- Habilitamos o Spring MVC a funcionar baseado em anotações -->
 	<mvc:annotation-driven />
 		
