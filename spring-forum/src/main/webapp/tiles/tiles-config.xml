@@ -5,6 +5,7 @@
 	
 	<definition name="main" template="/views/templates/main.jsp">
 		<put-attribute name="titulo" value="Spring Brasil"/>
+		<put-attribute name="cabecalho" value="/views/templates/cabecalho.jsp"/>
 		<put-attribute name="rodape" value="/views/templates/rodape.jsp"/>
 	</definition>
 	
