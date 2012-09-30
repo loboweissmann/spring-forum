@@ -12,7 +12,7 @@
 					<input type="text" name="login" placeholder="Usu&aacute;rio" class="three columns right"/>
 					<input type="password" name="senha" placeholder="Senha" class="three columns right"/>
 					<input type="submit" value="Entrar" class="tiny button success" class="three columns right"/>&nbsp;
-					<a href="<c:url value='/signup'/>" class="tiny button success">Registre-se</a>
+					<a href="<c:url value='registro'/>" class="tiny button success">Registre-se</a>
 				</div>
 				
 			</form>

@@ -35,6 +35,11 @@
 		<property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
 	</bean>
 	
+	<!-- Habilitando upload de arquivos -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="50000000"/>
+	</bean>
+	
 	<!-- Busca componentes do tipo @Controller dentro do pacote abaixo -->
 	<context:component-scan base-package="br.com.itexto.springforum.controladores"/>
 

@@ -3,6 +3,7 @@ package br.com.itexto.springforum.entidades;
 import java.util.Date;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
@@ -10,13 +11,15 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class Usuario extends Entidade {
 	
-	@Size(max=128) @NotNull @NotEmpty
+	
+	@NotNull @NotEmpty
 	private String nome;
-	@Email @NotNull @NotEmpty
+	@Email(message="Isto não é um e-mail") @NotNull @NotEmpty
 	private String email;
 	@NotNull
 	private Date dataCadastro = new Date();
-	@Size(min=8, max=32) @NotNull @NotEmpty
+	@NotNull @NotEmpty
+	@Size(min=8, max=32, message="Login muito curto ou muito longo") 
 	private String login;
 	
 	private String twitter;
@@ -24,6 +27,10 @@ public class Usuario extends Entidade {
 	private String senha;
 	
 	private Date ultimoLogin;
+	
+	private Assunto assunto;
+	public Assunto getAssunto() {return assunto;}
+	public void setAssunto(Assunto ass) {assunto = ass;}
 	
 	public Date getUltimoLogin() {return ultimoLogin;}
 	public void setUltimoLogin(Date data) {ultimoLogin = data;}

@@ -14,6 +14,11 @@
 </div>
 <br/>
 <div class="row">
+	<div class="two columns"><b>Avatar:</b></div>
+	<div class="ten columns"><img style="width:128px; height:128px;" src='<c:url value="/usuario/avatar/${usuario.login}"/>'/></div>
+</div>
+
+<div class="row">
 	<div class="two columns"><b>Nome:</b></div>
 	<div class="ten columns">${usuario.nome}</div>
 </div>
