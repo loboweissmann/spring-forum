@@ -21,6 +21,16 @@ public class DAOUsuario extends DAOBase<Usuario> {
 		return null;
 	}
 	
+	public Usuario getUsuario(String login, String senha) {
+		Usuario resultado = null;
+		for (Usuario usuario : list(-1,-1)) {
+			if (usuario.getLogin().equals(login) && usuario.getSenha().equals(senha)) {
+				return usuario;
+			}
+		}
+		return resultado;
+	}
+	
 	public List<Usuario> list(int offset, int max) {
 		if (todos == null) {
 			todos = new ArrayList<Usuario>();
@@ -41,7 +51,10 @@ public class DAOUsuario extends DAOBase<Usuario> {
 	}
 	
 	public void persistir(Usuario obj) {
-		list(-1,-1).add(obj);
+		List<Usuario> usuarios = list(-1,-1);
+		if (! usuarios.contains(obj)) {
+			usuarios.add(obj);
+		}
 	}
 	
 	public void excluir(Usuario obj) {

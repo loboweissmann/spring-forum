@@ -23,6 +23,11 @@ public class Usuario extends Entidade {
 	
 	private String senha;
 	
+	private Date ultimoLogin;
+	
+	public Date getUltimoLogin() {return ultimoLogin;}
+	public void setUltimoLogin(Date data) {ultimoLogin = data;}
+	
 	public String getTwitter() {return twitter;}
 	public void setTwitter(String valor) {twitter = valor;}
 

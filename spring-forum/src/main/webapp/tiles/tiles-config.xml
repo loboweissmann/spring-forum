@@ -4,7 +4,7 @@
 <tiles-definitions>
 	
 	<definition name="main" template="/views/templates/main.jsp">
-		<put-attribute name="titulo" value="Spring Brasil"/>
+		<put-attribute name="titulo" value="Spring Fórum"/>
 		<put-attribute name="cabecalho" value="/views/templates/cabecalho.jsp"/>
 		<put-attribute name="rodape" value="/views/templates/rodape.jsp"/>
 	</definition>
@@ -23,7 +23,9 @@
     	<put-attribute name="titulo" value="Detalhes do usuário"/>
     </definition>
     
-    
+    <definition name="loginFalho" extends="main">
+    	<put-attribute name="conteudo" value="/views/loginFalho.jsp"/>
+    </definition>
 
 
 </tiles-definitions>

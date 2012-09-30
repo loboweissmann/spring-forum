@@ -20,3 +20,9 @@
 	padding-left: 2.0em;
 	padding-right: 2.0em;
 }
+
+.erro {
+	color: red;
+	font-weight: normal;
+	padding: 0.2em;
+}
