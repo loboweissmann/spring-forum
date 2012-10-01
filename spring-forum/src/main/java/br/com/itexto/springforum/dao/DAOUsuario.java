@@ -31,6 +31,15 @@ public class DAOUsuario extends DAOBase<Usuario> {
 		return resultado;
 	}
 	
+	public Usuario getUsuario(String login) {
+		for (Usuario usuario : list(-1,-1)) {
+			if (usuario.getLogin().equals(login)) {
+				return usuario;
+			}
+		}
+		return null;
+	}
+	
 	public List<Usuario> list(int offset, int max) {
 		if (todos == null) {
 			todos = new ArrayList<Usuario>();

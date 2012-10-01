@@ -23,6 +23,10 @@
     	<put-attribute name="titulo" value="Detalhes do usuário"/>
     </definition>
     
+    <definition name="usuario/posts" template="/views/usuario/postsUsuario.jsp"/>
+    	
+    
+    
     <definition name="loginFalho" extends="main">
     	<put-attribute name="conteudo" value="/views/loginFalho.jsp"/>
     </definition>

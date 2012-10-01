@@ -98,6 +98,13 @@
     	<artifactId>commons-io</artifactId>
     	<version>2.1</version>
     </dependency>
+    
+    <!-- Para retornar JSON -->
+    <dependency>
+    	<groupId>org.codehaus.jackson</groupId>
+    	<artifactId>jackson-mapper-asl</artifactId>
+    	<version>1.7.1</version>
+    </dependency>
    
     
     <!-- Inclusão do Hibernate -->

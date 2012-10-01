@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="<c:url value="/recursos/stylesheets/foundation.min.css"/>" />
 	<link rel="stylesheet" href="<c:url value="/recursos/stylesheets/estilo.css"/>" />
 	<title><tiles:getAsString name="titulo" /></title>
+	<script type="text/javascript" src="<c:url value="/recursos/javascripts/jquery.js"/>"></script>
 </head>
 <body>
 	
