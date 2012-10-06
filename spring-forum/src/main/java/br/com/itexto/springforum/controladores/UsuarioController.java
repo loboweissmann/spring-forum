@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.itexto.springforum.dao.DAOTopico;
-import br.com.itexto.springforum.dao.DAOUsuario;
+import br.com.itexto.springforum.dao.mocks.MockDAOTopico;
+import br.com.itexto.springforum.dao.mocks.MockDAOUsuario;
 import br.com.itexto.springforum.entidades.Topico;
 import br.com.itexto.springforum.entidades.Usuario;
 
@@ -25,14 +25,14 @@ import br.com.itexto.springforum.entidades.Usuario;
 public class UsuarioController {
 	
 	@Autowired
-	private DAOUsuario daoUsuario;
-	public DAOUsuario getDaoUsuario() {return daoUsuario;}
-	public void setDaoUsuario(DAOUsuario dao) {daoUsuario = dao;}
+	private MockDAOUsuario daoUsuario;
+	public MockDAOUsuario getDaoUsuario() {return daoUsuario;}
+	public void setDaoUsuario(MockDAOUsuario dao) {daoUsuario = dao;}
 	
 	@Autowired
-	private DAOTopico daoTopico;
-	public DAOTopico getDaoTopico() {return daoTopico;}
-	public void setDaoTopico(DAOTopico dao) {daoTopico = dao;}
+	private MockDAOTopico daoTopico;
+	public MockDAOTopico getDaoTopico() {return daoTopico;}
+	public void setDaoTopico(MockDAOTopico dao) {daoTopico = dao;}
 	
 	/**
 	 * Exemplo de como lidar com requisições que possuam variáveis embutidas.
