@@ -69,6 +69,14 @@
      	</exclusions>
      </dependency>
     
+    <!-- Pool de Conexões C3P0 -->
+    <dependency>
+		<groupId>c3p0</groupId>
+		<artifactId>c3p0</artifactId>
+		<version>0.9.1.2</version>
+	</dependency>
+            
+    
     <!-- Sua inclusão é necessária por se tratar de uma dependência do Tiles 2 -->
     <dependency>
     	<groupId>org.slf4j</groupId>

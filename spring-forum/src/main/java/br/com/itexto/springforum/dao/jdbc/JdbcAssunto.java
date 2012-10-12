@@ -1,15 +1,16 @@
 package br.com.itexto.springforum.dao.jdbc;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
 
 import br.com.itexto.springforum.dao.DAOAssunto;
 import br.com.itexto.springforum.entidades.Assunto;
@@ -28,6 +29,63 @@ public class JdbcAssunto  extends JdbcBase<Assunto> implements DAOAssunto {
 				return assunto;
 			}});
 		
+	}
+	
+	public List<Assunto> listJDBC(int offset, int max) {
+		List<Assunto> resultado = new ArrayList<Assunto>();
+		Connection conexao = null;
+		try {
+			conexao = getConnection();
+			conexao.setAutoCommit(false);
+			PreparedStatement stmt = conexao.prepareStatement("select id, nome from assunto limit ? offset ?");
+			stmt.setInt(1, max);
+			stmt.setInt(2, offset);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				resultado.add(new Assunto(rs.getLong(1), rs.getString(2)));
+			}
+			conexao.commit();
+		} catch (SQLException ex) {
+			try {conexao.rollback();}
+			catch (SQLException ex2) {
+				
+			}
+		} finally {
+			if (conexao != null) {
+				try {
+				conexao.close();
+				} catch (SQLException ex) {
+					// trate o erro
+				}
+			}
+		}
+		return resultado;
+	}
+	
+	public void persistirJDBC(Assunto assunto) {
+		Connection conexao = null;
+		try {
+			conexao = getConnection();
+			conexao.setAutoCommit(false);
+			PreparedStatement stmt = conexao.prepareStatement("insert into assunto (nome) values (?)");
+			stmt.setString(1, assunto.getNome());
+			stmt.executeUpdate();
+			conexao.commit();
+		} catch (SQLException ex) {
+			try {
+				conexao.rollback();
+			} catch (SQLException ex2) {
+				// não deu pra fazer rollback
+			}
+		} finally {
+			if (conexao != null) {
+				try {
+					conexao.close();
+				} catch (SQLException ex2) {
+					// não consegui liberar o recurso
+				}
+			}
+		}
 	}
 
 	public void persistir(Assunto assunto) {

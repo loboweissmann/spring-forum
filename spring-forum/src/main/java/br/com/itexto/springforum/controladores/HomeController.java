@@ -17,9 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import br.com.itexto.springforum.dao.DAOAssunto;
+import br.com.itexto.springforum.dao.DAOTopico;
+import br.com.itexto.springforum.dao.DAOUsuario;
 import br.com.itexto.springforum.dao.mocks.MockDAOAssunto;
-import br.com.itexto.springforum.dao.mocks.MockDAOTopico;
-import br.com.itexto.springforum.dao.mocks.MockDAOUsuario;
 import br.com.itexto.springforum.entidades.Assunto;
 import br.com.itexto.springforum.entidades.Usuario;
 
@@ -28,29 +29,29 @@ public class HomeController {
 	
 	
 	@Autowired
-	private MockDAOUsuario daoUsuario;
+	private DAOUsuario daoUsuario;
 	@Autowired
-	private MockDAOTopico daoTopico;
+	private DAOTopico daoTopico;
 	@Autowired
-	private MockDAOAssunto daoAssunto;
+	private DAOAssunto daoAssunto;
 	
-	public MockDAOUsuario getDaoUsuario() {
+	public DAOUsuario getDaoUsuario() {
 		return daoUsuario;
 	}
 
-	public void setDaoUsuario(MockDAOUsuario daoUsuario) {
+	public void setDaoUsuario(DAOUsuario daoUsuario) {
 		this.daoUsuario = daoUsuario;
 	}
 
-	public MockDAOTopico getDaoTopico() {
+	public DAOTopico getDaoTopico() {
 		return daoTopico;
 	}
 
-	public void setDaoTopico(MockDAOTopico daoTopico) {
+	public void setDaoTopico(DAOTopico daoTopico) {
 		this.daoTopico = daoTopico;
 	}
 
-	public MockDAOAssunto getDaoAssunto() {
+	public DAOAssunto getDaoAssunto() {
 		return daoAssunto;
 	}
 
