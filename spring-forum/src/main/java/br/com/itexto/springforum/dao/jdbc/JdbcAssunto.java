@@ -23,6 +23,7 @@ public class JdbcAssunto  extends JdbcBase<Assunto> implements DAOAssunto {
 		return getJdbcTemplate().query("select id, nome from assunto limit ? offset ?", parametros, new RowMapper<Assunto>(){
 
 			public Assunto mapRow(ResultSet rs, int rowNum) throws SQLException {
+				
 				Assunto assunto = new Assunto();
 				assunto.setId(rs.getLong(1));
 				assunto.setNome(rs.getString(2));
@@ -75,14 +76,14 @@ public class JdbcAssunto  extends JdbcBase<Assunto> implements DAOAssunto {
 			try {
 				conexao.rollback();
 			} catch (SQLException ex2) {
-				// não deu pra fazer rollback
+				// nï¿½o deu pra fazer rollback
 			}
 		} finally {
 			if (conexao != null) {
 				try {
 					conexao.close();
 				} catch (SQLException ex2) {
-					// não consegui liberar o recurso
+					// nï¿½o consegui liberar o recurso
 				}
 			}
 		}
@@ -94,6 +95,10 @@ public class JdbcAssunto  extends JdbcBase<Assunto> implements DAOAssunto {
 				// estou inserindo
 				HashMap<String, Object> parametros = new HashMap<String, Object>();
 				parametros.put("nome", assunto.getNome());
+				new SimpleJdbcInsert(getDataSource())
+					.withTableName("assunto")
+					.usingGeneratedKeyColumns("id");
+				
 				SimpleJdbcInsert insert = new SimpleJdbcInsert(getJdbcTemplate());
 				assunto.setId(insert.withTableName("assunto")
 									.usingGeneratedKeyColumns("id")
