@@ -41,6 +41,33 @@
 			</props>
 		</property>
 		<property name="annotatedPackages" value="br.com.itexto.springforum.entidades"/>
+		
+	</bean>
+	
+	<bean id="sessionFactoryH3" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+		<property name="mappingLocations">
+			<array>
+				<value>classpath:br.com.itexto.springforum.entidades</value>
+				<value>file:///home/kicolobo/mapeamentos</value>
+			</array>
+		</property>
+	</bean>
+	
+	<bean id="sessionFactoryH3Annotation" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="annotatedClasses">
+			<array>
+				<value>br.com.itexto.springforum.entidades.Assunto</value>
+				<value>br.com.itexto.springforum.entidades.Topico</value>
+			</array>
+		</property>
+		<property name="annotated"
 	</bean>
 	
 </beans>

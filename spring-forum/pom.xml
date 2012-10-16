@@ -1,153 +1,176 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>br.com.itexto</groupId>
-  <artifactId>spring-forum</artifactId>
-  <packaging>war</packaging>
-  <version>1.0.0-SNAPSHOT</version>
-  <name>spring-forum</name>
-  <url>http://maven.apache.org</url>
-  
-  <properties>
-  	<spring.versao>3.1.1.RELEASE</spring.versao>
-  	<tiles.versao>2.2.2</tiles.versao>
-  </properties> 
-  
-  <dependencies>
-    <!-- As dependências do Spring Framework -->
-    <dependency>
-    	<groupId>org.springframework</groupId>
-    	<artifactId>spring-webmvc</artifactId>
-    	<version>${spring.versao}</version>
-    </dependency>
-    <!-- Para poder declarar o DataSource básico no ambiente de desenvolvimento -->
-    <dependency>
-    	<groupId>org.springframework</groupId>
-    	<artifactId>spring-jdbc</artifactId>
-    	<version>${spring.versao}</version>
-    </dependency>
-    <!-- Suporte ao Hibernate e JPA -->
-    <dependency>
-    	<groupId>org.springframework</groupId>
-    	<artifactId>spring-orm</artifactId>
-    	<version>${spring.versao}</version>
-    </dependency>
-    
-    <!-- Inclusão do Apache Tiles para lidar com
-    templates no Projeto -->
-    <dependency>
-    	<groupId>org.apache.tiles</groupId>
-    	<artifactId>tiles-core</artifactId>
-    	<version>${tiles.versao}</version>
-    	<exclusions>
-    		<exclusion>
-    			<artifactId>slf4j-api</artifactId>
-    			<groupId>org.slf4j</groupId>
-    		</exclusion>
-    	</exclusions>
-    </dependency>
-    <dependency>
-    	<groupId>org.apache.tiles</groupId>
-    	<artifactId>tiles-jsp</artifactId>
-    	<version>${tiles.versao}</version>
-    </dependency>
-    
-    <!-- Incluiremos o Hibernate Validator, que é a implementação de referência
-     da JSR-303 de validação.  -->
-     <dependency>
-     	<groupId>org.hibernate</groupId>
-     	<artifactId>hibernate-validator</artifactId>
-     	<version>4.2.0.Final</version>
-     	<!-- Nem tudo é simples.
-     	O Hibernate Validator causa conflitos com a declaração do slf4j-log4j12 que
-     	declaramos logo abaixo. -->
-     	<exclusions>
-     		<exclusion>
-     			<artifactId>slf4j-api</artifactId>
-     			<groupId>org.slf4j</groupId>
-     		</exclusion>
-     	</exclusions>
-     </dependency>
-    
-    <!-- Pool de Conexões C3P0 -->
-    <dependency>
-		<groupId>c3p0</groupId>
-		<artifactId>c3p0</artifactId>
-		<version>0.9.1.2</version>
-	</dependency>
-            
-    
-    <!-- Sua inclusão é necessária por se tratar de uma dependência do Tiles 2 -->
-    <dependency>
-    	<groupId>org.slf4j</groupId>
-    	<artifactId>slf4j-log4j12</artifactId>
-    	<version>1.5.6</version>
-    </dependency>
-    
-    <dependency>
-    	<groupId>jstl</groupId>
-    	<artifactId>jstl</artifactId>
-    	<version>1.2</version>
-    </dependency>
-    <dependency>
-    	<groupId>javax.servlet</groupId>
-    	<artifactId>servlet-api</artifactId>
-    	<version>2.5</version>
-    </dependency>
-    
-    <!-- Para upload de arquivos -->
-    <dependency>
-    	<groupId>commons-fileupload</groupId>
-    	<artifactId>commons-fileupload</artifactId>
-    	<version>1.2.2</version>
-    </dependency>
-    <dependency>
-    	<groupId>commons-io</groupId>
-    	<artifactId>commons-io</artifactId>
-    	<version>2.1</version>
-    </dependency>
-    
-    <!-- Para retornar JSON -->
-    <dependency>
-    	<groupId>org.codehaus.jackson</groupId>
-    	<artifactId>jackson-mapper-asl</artifactId>
-    	<version>1.7.1</version>
-    </dependency>
-   
-    
-    <!-- Inclusão do Hibernate -->
-    <dependency>
-    	<groupId>org.hibernate</groupId>
-    	<artifactId>hibernate-core</artifactId>
-    	<version>4.1.7.Final</version>
-    </dependency>
-    
-    <!-- O Driver de Acesso ao MySQL -->
-    <dependency>
-    	<groupId>mysql</groupId>
-    	<artifactId>mysql-connector-java</artifactId>
-    	<version>5.1.18</version>
-    </dependency>
-    
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-  
-  <build>
-    <finalName>spring-forum</finalName>
-    <plugins>
-    	<plugin>
-    		<groupId>org.apache.maven.plugins</groupId>
-    		<artifactId>maven-compiler-plugin</artifactId>
-    		<version>2.5.1</version>
-    		<configuration>
-    			<target>1.5</target>
-    		</configuration>
-    	</plugin>
-    </plugins>
-  </build>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>br.com.itexto</groupId>
+	<artifactId>spring-forum</artifactId>
+	<packaging>war</packaging>
+	<version>1.0.0-SNAPSHOT</version>
+	<name>spring-forum</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<spring.versao>3.1.1.RELEASE</spring.versao>
+		<tiles.versao>2.2.2</tiles.versao>
+		<spring.security.versao>3.1.3.RELEASE</spring.security.versao>
+	</properties>
+
+	<dependencies>
+		<!-- As dependências do Spring Framework -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.versao}</version>
+		</dependency>
+		<!-- Para poder declarar o DataSource básico no ambiente de desenvolvimento -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.versao}</version>
+		</dependency>
+		<!-- Suporte ao Hibernate e JPA -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.versao}</version>
+		</dependency>
+
+		<!-- Inclusão do Apache Tiles para lidar com templates no Projeto -->
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-core</artifactId>
+			<version>${tiles.versao}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>slf4j-api</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-jsp</artifactId>
+			<version>${tiles.versao}</version>
+		</dependency>
+
+		<!-- Incluiremos o Hibernate Validator, que é a implementação de referência 
+			da JSR-303 de validação. -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>4.2.0.Final</version>
+			<!-- Nem tudo é simples. O Hibernate Validator causa conflitos com a declaração 
+				do slf4j-log4j12 que declaramos logo abaixo. -->
+			<exclusions>
+				<exclusion>
+					<artifactId>slf4j-api</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- Pool de Conexões C3P0 -->
+		<dependency>
+			<groupId>c3p0</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>0.9.1.2</version>
+		</dependency>
+
+
+		<!-- Sua inclusão é necessária por se tratar de uma dependência do Tiles 
+			2 -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.5.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+		</dependency>
+
+		<!-- Para upload de arquivos -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.1</version>
+		</dependency>
+
+		<!-- Para retornar JSON -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.7.1</version>
+		</dependency>
+
+
+		<!-- Inclusão do Hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>4.1.7.Final</version>
+		</dependency>
+
+		<!-- O Driver de Acesso ao MySQL -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.18</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Spring Security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${spring.security.versao}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring.security.versao}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring.security.versao}</version>
+		</dependency>
+
+	</dependencies>
+
+
+
+
+
+
+	<build>
+		<finalName>spring-forum</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.5.1</version>
+				<configuration>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
