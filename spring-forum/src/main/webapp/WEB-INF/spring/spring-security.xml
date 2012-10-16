@@ -5,6 +5,18 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 	
+	<security:http auto-config="true">
+		<security:intercept-url pattern="/resposta" access="ROLE_MEMBRO"/>
+		
+	</security:http>
 	
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:user-service>
+				<security:user name="jimmy" password="hendrix" authorities="ROLE_MEMBRO"/>
+				<security:user name="admin" password="admin" authorities="ROLE_MEMBRO,ROLE_ADMIN"/>
+			</security:user-service>
+		</security:authentication-provider>
+	</security:authentication-manager>
 
 </beans>
