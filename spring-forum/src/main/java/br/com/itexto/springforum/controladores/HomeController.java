@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import br.com.itexto.springforum.dao.DAOAssunto;
+import br.com.itexto.springforum.dao.DAOPermissaoUsuario;
 import br.com.itexto.springforum.dao.DAOTopico;
 import br.com.itexto.springforum.dao.DAOUsuario;
 import br.com.itexto.springforum.dao.mocks.MockDAOAssunto;
@@ -34,6 +35,16 @@ public class HomeController {
 	private DAOTopico daoTopico;
 	@Autowired
 	private DAOAssunto daoAssunto;
+	@Autowired
+	private DAOPermissaoUsuario daoPermissaoUsuario;
+	
+	public DAOPermissaoUsuario getDaoPermissaoUsuario() {
+		return daoPermissaoUsuario;
+	}
+	
+	public void setDaoPermissaoUsuario(DAOPermissaoUsuario dao) {
+		daoPermissaoUsuario = dao;
+	}
 	
 	public DAOUsuario getDaoUsuario() {
 		return daoUsuario;
@@ -79,8 +90,7 @@ public class HomeController {
 	public String registro(Map<String, Object> model) {
 		if (model.get("usuario") == null) {
 			Usuario usr = new Usuario();
-			usr.setAssunto(new Assunto());
-			usr.getAssunto().setNome("Cranks");
+			
 			model.put("usuario", usr);
 		}
 		return "registro";
@@ -97,7 +107,7 @@ public class HomeController {
 			return registro(model);
 		}
 		getDaoUsuario().persistir(usuario);
-		
+		getDaoPermissaoUsuario().addRole("ROLE_MEMBRO", usuario);
 		if (! avatar.isEmpty()) {
 			processarAvatar(usuario, avatar);
 		}

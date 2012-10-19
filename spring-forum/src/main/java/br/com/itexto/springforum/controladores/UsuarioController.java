@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.itexto.springforum.dao.mocks.MockDAOTopico;
-import br.com.itexto.springforum.dao.mocks.MockDAOUsuario;
+import br.com.itexto.springforum.dao.DAOTopico;
+import br.com.itexto.springforum.dao.DAOUsuario;
 import br.com.itexto.springforum.entidades.Topico;
 import br.com.itexto.springforum.entidades.Usuario;
 
@@ -25,24 +25,26 @@ import br.com.itexto.springforum.entidades.Usuario;
 public class UsuarioController {
 	
 	@Autowired
-	private MockDAOUsuario daoUsuario;
-	public MockDAOUsuario getDaoUsuario() {return daoUsuario;}
-	public void setDaoUsuario(MockDAOUsuario dao) {daoUsuario = dao;}
+	private DAOUsuario daoUsuario;
+	public DAOUsuario getDaoUsuario() {return daoUsuario;}
+	public void setDaoUsuario(DAOUsuario dao) {daoUsuario = dao;}
 	
 	@Autowired
-	private MockDAOTopico daoTopico;
-	public MockDAOTopico getDaoTopico() {return daoTopico;}
-	public void setDaoTopico(MockDAOTopico dao) {daoTopico = dao;}
+	private DAOTopico daoTopico;
+	public DAOTopico getDaoTopico() {return daoTopico;}
+	public void setDaoTopico(DAOTopico dao) {daoTopico = dao;}
 	
 	/**
-	 * Exemplo de como lidar com requisições que possuam variáveis embutidas.
+	 * Exemplo de como lidar com requisiÃ§Ãµes com variÃ¡veis embutidas.
 	 * @param id
 	 * @return
 	 */
 	@RequestMapping("/usuario/show/{id}")
 	public ModelAndView usuario(@PathVariable("id") Long id) {
 		ModelAndView mav = new ModelAndView();
+		System.out.println("Vou expor o usuario");
 		Usuario usuario = getDaoUsuario().get(id);
+		System.out.println("Encontrei o usuario: " + usuario);
 		mav.getModel().put("usuario", usuario);
 		mav.setViewName("usuario/show");
 		return mav;

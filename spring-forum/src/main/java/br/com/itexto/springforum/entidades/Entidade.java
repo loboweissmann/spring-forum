@@ -8,12 +8,15 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
+
 @Entity @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public abstract class Entidade implements java.io.Serializable {
 	
-	@Id 
+	@Id @Generated(GenerationTime.INSERT) 
+	@GeneratedValue(strategy=GenerationType.TABLE)
 	@Column(name="id", unique=true) 
-	@GeneratedValue(strategy=GenerationType.AUTO, generator="autoincrement")
 	private long id;
 	
 	public long getId() {return id;}

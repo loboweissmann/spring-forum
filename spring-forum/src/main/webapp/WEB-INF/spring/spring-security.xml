@@ -5,12 +5,24 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 	
-	<security:http auto-config="true">
-		<security:intercept-url pattern="/resposta" access="ROLE_MEMBRO"/>
-		
+	<security:http auto-config="true" use-expressions="true">
+		<security:form-login 
+			authentication-failure-url="/"
+			login-page="/"
+			default-target-url="/"/>
+		<security:intercept-url pattern="/post/publicar/**" access="hasRole('ROLE_MEMBRO')"/>
+		<!-- 
+		<security:intercept-url pattern="/**" access="isAnonymous()"/>
+		 -->
 	</security:http>
 	
+	<bean id="sfAuthenticationProvider" 
+		  autowire="byType"
+		  class="br.com.itexto.springforum.security.SFAuthenticationProvider"/>
+	
+	
 	<security:authentication-manager>
+		<security:authentication-provider ref="sfAuthenticationProvider"/>
 		<security:authentication-provider>
 			<security:user-service>
 				<security:user name="jimmy" password="hendrix" authorities="ROLE_MEMBRO"/>

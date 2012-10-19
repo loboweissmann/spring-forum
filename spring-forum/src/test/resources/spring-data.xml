@@ -24,17 +24,17 @@
 		
 		A cada chamada ao método getConnection() do bean obtido uma nova conexão é obtida.
 	 -->
-	 
+	  
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="username" value="sf"/>
 		<property name="password" value="sf"/>
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 		<property name="url" value="jdbc:mysql://localhost:3306/spring_forum"/>
 	</bean>
-	
+	 
 	
 	<!-- DataSource usando um pool C3P0 -->
-	<!-- 
+	 <!-- 
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		
 		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
@@ -43,11 +43,14 @@
 		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/spring_forum"/>
 		
 		<property name="maxPoolSize" value="10"/>
+		<property name="initialPoolSize" value="1"/>
+		<property name="acquireRetryAttempts" value="1"/>
+		 
 		<property name="acquireIncrement" value="1"/>
 		<property name="maxIdleTime" value="120"/>
-		<property name="acquireRetryAttempts" value="10"/>
-		<property name="initialPoolSize" value="1"/>
-			  
+		
+		
+		 
 	</bean>
 	 -->
 	
@@ -63,16 +66,16 @@
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
 			</props>
 		</property>
-		
+		 
 		<property name="annotatedClasses">
 			<array>
 				<value>br.com.itexto.springforum.entidades.Usuario</value>
-				<value>br.com.itexto.springforum.entidades.PermissaoUsuario</value>
-				<value>br.com.itexto.springforum.entidades.Assunto</value>
 				<value>br.com.itexto.springforum.entidades.Topico</value>
-				
+				<value>br.com.itexto.springforum.entidades.Assunto</value>
 			</array>
 		</property>
+		
+			
 		
 	</bean>
 	<tx:advice transaction-manager="transactionManager" id="txAdvice">

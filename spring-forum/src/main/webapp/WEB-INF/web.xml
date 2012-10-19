@@ -20,20 +20,24 @@
 		<param-value>
 			/WEB-INF/spring/spring-servlet.xml
 			/WEB-INF/spring/spring-data.xml
-			
+			/WEB-INF/spring/spring-security.xml
 		</param-value>
 	</context-param> 
 
 	<!-- Configuração do filtro básico da aplicação para o Spring Security -->
-	<!-- <filter> -->
+	<filter>
 		<!-- O nome do filtro é importante:
 		ele aponta para o nome de um bean de mesmo nome que será criado internamente pelo
 		Spring Security para lidar com a segurança de requisições. -->
-	<!-- 
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
 	</filter>
-	-->
+	
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
 	
  
 	<!-- O Dispatcher Servlet do Spring -->

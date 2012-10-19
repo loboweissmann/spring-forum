@@ -9,7 +9,7 @@
 	<url>http://maven.apache.org</url>
 
 	<properties>
-		<spring.versao>3.1.1.RELEASE</spring.versao>
+		<spring.versao>3.1.2.RELEASE</spring.versao>
 		<tiles.versao>2.2.2</tiles.versao>
 		<spring.security.versao>3.1.3.RELEASE</spring.security.versao>
 	</properties>
@@ -32,6 +32,27 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
 			<version>${spring.versao}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${spring.versao}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.6.12</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.6.12</version>
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>2.2.2</version>
 		</dependency>
 
 		<!-- Inclusão do Apache Tiles para lidar com templates no Projeto -->
@@ -132,7 +153,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
+			<version>4.8.1</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -151,6 +172,18 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
 			<version>${spring.security.versao}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${spring.security.versao}</version>
+			
+		</dependency>
+		
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.6</version>
 		</dependency>
 
 	</dependencies>

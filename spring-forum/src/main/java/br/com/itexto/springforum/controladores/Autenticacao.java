@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import br.com.itexto.springforum.dao.mocks.MockDAOUsuario;
+import br.com.itexto.springforum.dao.DAOUsuario;
 import br.com.itexto.springforum.entidades.Usuario;
 
 @Controller
 public class Autenticacao {
 	
 	@Autowired
-	private MockDAOUsuario daoUsuario;
+	private DAOUsuario daoUsuario;
 	
 	/**
 	 * Mapeamento de autenticação.

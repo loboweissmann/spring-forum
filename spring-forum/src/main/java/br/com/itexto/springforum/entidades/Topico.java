@@ -2,14 +2,37 @@ package br.com.itexto.springforum.entidades;
 
 import java.util.Date;
 
-public class Topico extends Entidade {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
+
+@Entity @Table(name="topico")
+public class Topico  {
 	
+	@Generated(GenerationTime.INSERT) @GeneratedValue(strategy=GenerationType.IDENTITY) 
+	@Id @Column(name="id", nullable=false, unique=true)
+	private long id;
+	
+	public long getId() {return id;}
+	public void setId(long valor) {id = valor;}
+	
+	@ManyToOne @JoinColumn(name="assunto_id", nullable=false)
 	private Assunto assunto;
-	
+	@ManyToOne @JoinColumn(name="autor_id", nullable=false)
 	private Usuario autor;
-	
+	@Column(name="data_cadastro", nullable=false) @Temporal(TemporalType.TIMESTAMP)
 	private Date dataCadastro = new Date();
-	
+	@Column(name="titulo", nullable=false, length=128)
 	private String titulo;
 
 	public Assunto getAssunto() {
