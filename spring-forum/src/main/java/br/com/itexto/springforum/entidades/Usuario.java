@@ -19,14 +19,15 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity @Table(name="usuario")
-public class Usuario {
+public class Usuario implements java.io.Serializable {
 	
-	@Generated(GenerationTime.INSERT) @GeneratedValue(strategy=GenerationType.IDENTITY) 
-	@Id @Column(name="id", nullable=false, unique=true)
-	private long id;
+	@Id @Generated(GenerationTime.INSERT) 
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id", unique=true) 
+	protected long id;
 	
 	public long getId() {return id;}
-	public void setId(long valor) {id = valor;}
+	public void setId(long valor) {this.id = valor;}
 	
 	@NotNull @NotEmpty
 	@Column(name="nome", nullable=false, length=128)

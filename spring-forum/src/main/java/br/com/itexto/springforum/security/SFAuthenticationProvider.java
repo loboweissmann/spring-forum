@@ -36,6 +36,9 @@ public class SFAuthenticationProvider implements AuthenticationProvider {
 		String username = token.getName();
 		String senha    = token.getCredentials() != null ? token.getCredentials().toString() : null;
 		Usuario usuario = getDaoUsuario().getUsuario(username, senha);
+		if (usuario == null) {
+			return null;
+		}
 		List<PermissaoUsuario> permissoes = getDaoPermissao().getPermissoesUsuario(usuario);
 		SFAuthentication resultado = new SFAuthentication(usuario, permissoes);
 		resultado.setAuthenticated(usuario != null);

@@ -14,14 +14,15 @@ import org.hibernate.annotations.GenerationTime;
 import org.springframework.security.core.GrantedAuthority;
 
 @Entity @Table(name="permissao_usuario")
-public class PermissaoUsuario implements GrantedAuthority {
+public class PermissaoUsuario  implements GrantedAuthority, java.io.Serializable {
 	
-	@Generated(GenerationTime.INSERT) @GeneratedValue(strategy=GenerationType.IDENTITY) 
-	@Id @Column(name="id", nullable=false, unique=true)
-	private long id;
+	@Id @Generated(GenerationTime.INSERT) 
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id", unique=true) 
+	protected long id;
 	
 	public long getId() {return id;}
-	public void setId(long valor) {id = valor;}
+	public void setId(long valor) {this.id = valor;}
 	
 	@Column(name="role", nullable=false, length=64)
 	private String role;

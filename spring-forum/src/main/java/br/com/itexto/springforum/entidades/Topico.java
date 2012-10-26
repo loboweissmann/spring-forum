@@ -17,14 +17,15 @@ import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
 
 @Entity @Table(name="topico")
-public class Topico  {
+public class Topico implements java.io.Serializable {
 	
-	@Generated(GenerationTime.INSERT) @GeneratedValue(strategy=GenerationType.IDENTITY) 
-	@Id @Column(name="id", nullable=false, unique=true)
-	private long id;
+	@Id @Generated(GenerationTime.INSERT) 
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id", unique=true) 
+	protected long id;
 	
 	public long getId() {return id;}
-	public void setId(long valor) {id = valor;}
+	public void setId(long valor) {this.id = valor;}
 	
 	@ManyToOne @JoinColumn(name="assunto_id", nullable=false)
 	private Assunto assunto;

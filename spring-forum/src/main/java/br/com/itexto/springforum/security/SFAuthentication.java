@@ -36,7 +36,7 @@ public class SFAuthentication implements Authentication {
 	}
 
 	public Object getPrincipal() {
-		return usuario.getLogin();
+		return usuario != null ? usuario.getLogin() : null;
 	}
 
 	public boolean isAuthenticated() {

@@ -11,14 +11,16 @@ import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
 
 @Entity @Table(name="assunto")
-public class Assunto implements Comparable{
+public class Assunto implements Comparable, java.io.Serializable {
 	
-	@Id @Column(name="id", nullable=false, unique=true)
-	@Generated(GenerationTime.INSERT) @GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
+	@Id @Generated(GenerationTime.INSERT) 
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id", unique=true) 
+	protected long id;
+	
 	public long getId() {return id;}
 	public void setId(long valor) {this.id = valor;}
-	
+		
 	@Column(name="nome", unique=true, length=128)
 	private String nome;
 	

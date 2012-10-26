@@ -81,7 +81,7 @@ public class HomeController {
 	 */
 	@RequestMapping("/")
 	public String index(Map<String, Object> model) {
-		model.put("assuntos", getDaoAssunto().list(-1,-1));
+		model.put("assuntos", getDaoAssunto().list(0,100));
 		model.put("usuarios", getDaoUsuario().list(0,100));
 		return "index";
 	}
