@@ -25,13 +25,13 @@ public class MockDAOTopico extends MockDAOBase<Topico> implements DAOTopico {
 	private String[] titulos = {"Como eu configuro o Spring?", 
 								"Problema com suporte a DAO", 
 								"Como funciona AOP?", 
-								"Dúvida com Spring Security",
+								"Dï¿½vida com Spring Security",
 								"JDBCTemplate: como eu uso?", 
-								"Configuração XML: problema", 
+								"Configuraï¿½ï¿½o XML: problema", 
 								"Projeto de exemplo", 
 								"Hibernate: como definir o SessionFactory?", 
 								"DataSource: como obter via JNDI?", 
-								"Como funciona a requisição no MVC?", 
+								"Como funciona a requisiï¿½ï¿½o no MVC?", 
 								"Aonde uso o Spring?"};
 	
 	
@@ -53,6 +53,11 @@ public class MockDAOTopico extends MockDAOBase<Topico> implements DAOTopico {
 	@Override
 	public Class getClazz() {
 		return Topico.class;
+	}
+	public List<Topico> getTopicosPorAssunto(Assunto assunto, int offset,
+			int max) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
