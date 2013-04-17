@@ -34,6 +34,21 @@
 		<property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
 	</bean>
 	
+	 
+	 <!-- O view resolver usado em nosso 'Ola Mundo' -->
+	 <!--
+	 	 
+	 <bean id="viewResolver"
+    	class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
+        <property name="prefix">
+            <value>/views/</value>
+        </property>
+        <property name="suffix">
+            <value>.jsp</value>
+        </property>
+    </bean>
+     -->
+	 
 	<!-- Habilitando upload de arquivos -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="50000000"/>
